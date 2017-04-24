@@ -169,6 +169,34 @@ $ python -m pelican.server
 <p>(but in my case, on Windows and from GitBash, I had to create a symlink from <code>python.exe</code> to <code>python3.exe</code> to make it work)</p>
 <p>Now, check the result by opening a browser at <a href="http://localhost:8000">http://localhost:8000</a></p>
 <h3>Install &amp; Setup a Theme (Optional)</h3>
+<p>Now we have a first start for the content, it's time to work on the presentation.
+It's of course possible to design your very own presentation by developing<br>
+Pelican has a fair amount of themes you can discover &amp; dowload <a href="http://www.pelicanthemes.com">here</a>.
+I choose <code>pelican-blue</code> and cloned it from the project's GitHub <a href="https://github.com/Parbhat/pelican-blue">repository</a>.</p>
+<p>For this, I'd recommend creating a <code>pelican-themes</code> directory in your pelican project dir:</p>
+<div class="highlight"><pre><span></span>mkdir pelican-themes
+cd pelican-themes
+git clone https://github.com/Parbhat/pelican-blue.git
+</pre></div>
+
+
+<p>Then, import the theme into your Pelican config:</p>
+<div class="highlight"><pre><span></span>cd ..
+pelican-themes -i pelican-themes/pelican-blue
+</pre></div>
+
+
+<p>No sure for each theme you might like &amp; use, but in my case, the GitHUb repo <code>Readme.md</code> file described variables to be setup in the <code>pelicanconf.py</code> file:</p>
+<div class="highlight"><pre><span></span>THEME = &#39;path-to-pelican-blue-theme&#39;
+SIDEBAR_DIGEST = &#39;Programmer and Web Developer&#39;
+FAVICON = &#39;url-to-favicon&#39;
+DISPLAY_PAGES_ON_MENU = True
+TWITTER_USERNAME = &#39;twitter-user-name&#39;
+MENUITEMS = ((&#39;Blog&#39;, SITEURL),)
+</pre></div>
+
+
+<p>I also discovered a non-documented variable <code>PAGES = True</code> required to have static pages appearing in my Blog Menu (in addition to having a <code>pages</code> subdirectory in the <code>content</code> directory).</p>
 <h3>Publish your local Blog copy to your GitHub repository</h3>
         </div>
         <div class="post_list">

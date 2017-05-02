@@ -11,16 +11,17 @@
   <link rel="shortcut icon" href="">
 
   <!-- schema.org -->
-  <meta itemprop="name" content="Pascal Rabier">
+  <meta itemprop="name" content="Software-Defined Infra Blog">
   <meta itemprop="image" content="">
   <meta itemprop="description" content="">
 
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
   <!-- Style Meta Data -->
-  <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://rabierp.github.io/theme/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="https://rabierp.github.io/theme/css/pygments.css" type="text/css" />
 
   <!-- Feed Meta Data -->
+    <link href="https://rabierp.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Software-Defined Infra Blog ATOM Feed" />
 
   <!-- Twitter Feed -->
   <meta name="twitter:card" content="summary">
@@ -28,12 +29,12 @@
   <meta name="twitter:image" content="">
 
 <meta name="twitter:creator" content="@SWDefinedInfra">
-<meta name="twitter:url" content="/setting-up-a-github-blog-with-pelican.html">
-<meta name="twitter:title" content="Pascal Rabier ~ Setting up a GitHub blog with Pelican">
+<meta name="twitter:url" content="https://rabierp.github.io/setting-up-a-github-blog-with-pelican.html">
+<meta name="twitter:title" content="Software-Defined Infra Blog ~ Setting up a GitHub blog with Pelican">
 <meta name="twitter:description" content="I&#39;ve been thinking about writing my own Blog for a long time, but had not found the time to invest into searching the simple and fun kind of solution I was looking for. Not being a developer, I only discovered very recently that GitHub is offering a free way of …">
 
 <!-- Facebook Meta Data -->
-<meta property="og:title" content="Pascal Rabier ~ Setting up a GitHub blog with Pelican" />
+<meta property="og:title" content="Software-Defined Infra Blog ~ Setting up a GitHub blog with Pelican" />
 <meta property="og:description" content="I&#39;ve been thinking about writing my own Blog for a long time, but had not found the time to invest into searching the simple and fun kind of solution I was looking for. Not being a developer, I only discovered very recently that GitHub is offering a free way of …" />
 <meta property="og:image" content="" />
 </head>
@@ -41,9 +42,9 @@
 <body>
   <!-- Sidebar -->
   <aside>
-    <!--<center><a href=""><img id="avatar" src=""></a></center>-->
-    <h1>Pascal Rabier</h1>
-      <p>Cloud Infrastructure Architect</p>
+    <!--<center><a href="https://rabierp.github.io"><img id="avatar" src=""></a></center>-->
+    <h1>Software-Defined Infra Blog</h1>
+      <p>Cloud Infrastructure & Architecture</p>
     <br>
 
       <a class="twitter-follow-button"
@@ -66,21 +67,24 @@
     <nav class="nav">
       <ul class="list-bare">
       
-          <li><a class="nav__link" href="">Blog</a></li>
+          <li><a class="nav__link" href="https://rabierp.github.io">Blog</a></li>
          
+          <li><a class="nav__link" href="https://rabierp.github.io/pages/about.html">About</a></li>
         
       </ul>
     </nav>
 
     <p class="social">
-        <a href="https://www.linkedin.com/in/pascalrabier" target="_blank" ><img src="/theme/images/icons/linkedin.png"></a>
-        <a href="https://github.com/rabierp" target="_blank" ><img src="/theme/images/icons/github.png"></a>
-        <a href="https://twitter.com/SWDefinedInfra" target="_blank" ><img src="/theme/images/icons/twitter.png"></a>
+        <a href="https://www.linkedin.com/in/pascalrabier" target="_blank" ><img src="https://rabierp.github.io/theme/images/icons/linkedin.png"></a>
+        <a href="https://github.com/rabierp" target="_blank" ><img src="https://rabierp.github.io/theme/images/icons/github.png"></a>
+        <a href="https://twitter.com/SWDefinedInfra" target="_blank" ><img src="https://rabierp.github.io/theme/images/icons/twitter.png"></a>
+      <a href="https://rabierp.github.io/feeds/all.atom.xml" rel="alternate">
+        <img src="https://rabierp.github.io/theme/images/icons/rss.png"></a>
     </p>
 
     <h2>Categories</h2>
     <ul class="navbar">
-      <li class="active"><a href="/category/blogging.html">Blogging</a></li>
+      <li class="active"><a href="https://rabierp.github.io/category/blogging.html">Blogging</a></li>
     </ul> 
 
       <h2 class="blog_roll_link"><br/>BLOGROLLS</h2>
@@ -96,7 +100,7 @@
   <article>
 <section id="content">
     <article>
-        <h2 class="post_title post_detail"><a href="/setting-up-a-github-blog-with-pelican.html" rel="bookmark" title="Permalink to Setting up a GitHub blog with Pelican">Setting up a GitHub blog with Pelican</a></h2>
+        <h2 class="post_title post_detail"><a href="https://rabierp.github.io/setting-up-a-github-blog-with-pelican.html" rel="bookmark" title="Permalink to Setting up a GitHub blog with Pelican">Setting up a GitHub blog with Pelican</a></h2>
         <div class="entry-content blog-post">
             <p>I've been thinking about writing my own Blog for a long time, but had not found the time to invest into searching the simple and fun kind of solution I was looking for.
 Not being a developer, I only discovered very recently that GitHub is offering a free way of hosting your own static blog.
@@ -104,8 +108,21 @@ I was quickly interested, and a few minutes googling pointed me to <a href="http
 But I was not fully convinced at start because I wasn't willing to invest in learning Ruby. So it took me a bit more googling to find <a href="http://getpelican.com">pelican</a>, which is a <a href="http://python.org">Python</a> tool, a language I'm more comfortable with.</p>
 <p>Here's how I have set up Pelican in order to be able to publish my Blog on My GitHub User Page:</p>
 <h3>Setup your User Page repo on GitHub</h3>
-<p>Simply create a new GitHub repository named <code>&lt;github-user-name&gt;.github.io</code>.
+<p>Simply create a new GitHub repository named <code>&lt;github-username&gt;.github.io</code>.
 You can follow the instructions <a href="https://pages.github.com">here</a>.</p>
+<p>Then, clone this empty repo to the local machine:</p>
+<div class="highlight"><pre><span></span>$ git clone https://github.com/&lt;github-username&gt;/&lt;github-username&gt;.github.io/
+$ <span class="nb">cd</span> &lt;github-username&gt;.github.io
+</pre></div>
+
+
+<p>We now are working on the <code>master</code> branch of the local repo.</p>
+<p>But, since the kind of page we want to publish is a <em>User</em> page, rather than a <em>Project</em> page, the master branch of the repo is the one who must directly handle the root of our future website, not the pelican files that will be installed in the next following steps.</p>
+<p>So, create directly a new branch, that I choose to name <code>pelican</code>, because it will handle the pelican project files:</p>
+<div class="highlight"><pre><span></span>$ git checkout -b pelican
+</pre></div>
+
+
 <h3>Install &amp; Setup Pelican on your PC</h3>
 <p>I'm Assuming you already have Python installed (As of today, Pelican works as nicely with Python 2.7.x as with 3.3+).
 If this is not the case and if you're working on WindowsTM, I recommend using <a href="http://chocolatey.org">Chocolatey</a>, my favorite Package Manager for that OS, to easily install Python and any kind of free software you like (or mostly any, since the chocolatey package repository is pretty large!).</p>
@@ -120,9 +137,7 @@ If this is not the case and if you're working on WindowsTM, I recommend using <a
 <li><a href="https://github.com/davisp/ghp-import">ghp-import</a> will be used later to publish the blog to the target GitHub Page</li>
 </ul>
 <p>Let's configure Pelican:</p>
-<div class="highlight"><pre><span></span>$ mkdir MyBlog
-$ <span class="nb">cd</span> MyBlog
-$ pelican-quickstart
+<div class="highlight"><pre><span></span>$ pelican-quickstart
 </pre></div>
 
 
@@ -130,16 +145,16 @@ $ pelican-quickstart
 <ul>
 <li>Title of the Web site: choose your title</li>
 <li>Author of the Web site: put your name or pseudo depending on your preferences</li>
-<li>URL prefix: answer 'Y' and specify the GitHUb User page URL 'http://<em>github-user-name</em>.github.io/'</li>
+<li>URL prefix: answer 'Y' and specify the GitHub User page URL 'http://<github-username>.github.io/'</li>
 </ul>
 <p>As a result, the <code>MyBlog</code> directory now contains the Pelican default file tree.</p>
 <p>The <a href="http://docs.getpelican.com">Pelican documentation</a> will give you more insights on all possible parameters.</p>
 <h3>Create a first Article &amp; locally Preview your Blog</h3>
 <p>All you have to do, is to go to the <code>content</code> directory in the hierarchy create in the previous paragraph, and create the file that will contain your first Post.</p>
-<p>You can name it as you want, e.g. <code>My-1st-post.md</code>.
-The format of a post file is:</p>
+<p>You can name the file as you want, e.g. <code>My-1st-post.md</code>.</p>
+<p>File content format is:</p>
 <ul>
-<li>the header, with the following lines: 'Title: <em>Post title</em>', 'Date: <em>Post date</em>', 'Category: <em>Post category</em>' and 'Tags: <em>list of coma separated Post tags</em>'</li>
+<li>the header, with the following lines: 'Title: <em>Post title</em>', 'Date: <em>Post date</em>', 'Category: <em>Post category</em>' and 'Tags: <em>list of coma separated Post tags</em>',</li>
 <li>the content, written by default in reStructuredText (aka rst) or in Markdown markup languages.</li>
 </ul>
 <p>I prefer using Markdown rather than Pelican's default rst, that's why I added mardown module to the <code>pip install</code> command detailed earlier in this article.</p>
@@ -153,7 +168,7 @@ The format of a post file is:</p>
 </pre></div>
 
 
-<p>You might find Adam Pritchard's <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a> helpful.</p>
+<p>You might find GitHub's <a href="https://guides.github.com/features/mastering-markdown">Markdown Guide</a> helpful.</p>
 <p>Now, from the project main directory, run pelican to generate the static html content and then launch a local webserver:</p>
 <div class="highlight"><pre><span></span>$ pelican content
 $ python -m pelican.server
@@ -166,32 +181,89 @@ $ python -m pelican.server
 
 
 <p>(but in my case, on Windows and from GitBash, I had to create a symlink from <code>python.exe</code> to <code>python3.exe</code> to make it work)</p>
-<p>Now, check the result by opening a browser at <a href="http://localhost:8000">http://localhost:8000</a></p>
+<p>Now, check the result by opening a browser at <a href="http://localhost:8000">http://localhost:8000</a>.</p>
 <h3>Install &amp; Setup a Theme (Optional)</h3>
+<p>Now we have a first start for the content, it's time to work on the presentation.
+It's of course possible to design your very own presentation by developing your own theme, but it is by far easier to start by reusing existing ones: Pelican has a fair amount of themes you can discover &amp; download <a href="http://www.pelicanthemes.com">here</a>.
+I choose <code>pelican-blue</code> and cloned it from the project's GitHub <a href="https://github.com/Parbhat/pelican-blue">repository</a>.</p>
+<p>For this, I'd recommend creating a <code>pelican-themes</code> directory in your pelican project dir:</p>
+<div class="highlight"><pre><span></span>$ mkdir pelican-themes
+$ <span class="nb">cd</span> pelican-themes
+$ git clone https://github.com/Parbhat/pelican-blue.git
+</pre></div>
+
+
+<p>Then, import the theme into your Pelican config:</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ..
+$ pelican-themes -i pelican-themes/pelican-blue
+</pre></div>
+
+
+<p>No sure for each theme you might like &amp; use, but in my case, the GitHUb repo <code>Readme.md</code> file described variables to be setup in the <code>pelicanconf.py</code> file:</p>
+<div class="highlight"><pre><span></span>THEME = &#39;path-to-pelican-blue-theme&#39;
+SIDEBAR_DIGEST = &#39;Programmer and Web Developer&#39;
+FAVICON = &#39;url-to-favicon&#39;
+DISPLAY_PAGES_ON_MENU = True
+TWITTER_USERNAME = &#39;twitter-user-name&#39;
+MENUITEMS = ((&#39;Blog&#39;, SITEURL),)
+</pre></div>
+
+
+<p>In my own setup, I also discovered a non-documented variable <code>PAGES = True</code> required to have static pages appearing in my Blog Menu (in addition to having a <code>pages</code> subdirectory in the <code>content</code> directory). But that may be related to the way the specific way the <code>pelican-blue</code> theme is developed.</p>
+<p>Now, regenerate our blog with the new theme and check the result:</p>
+<div class="highlight"><pre><span></span>$ pelican content
+$ ./development_server.sh start
+</pre></div>
+
+
+<p>And open your browser at <a href="http://localhost:8000">http://localhost:8000</a>.</p>
 <h3>Publish your local Blog copy to your GitHub repository</h3>
+<p>During the 1st step, we've created the GitHub repository for the User page.</p>
+<p>Since then, we've generated and tested some content locally.</p>
+<p>So now, we want to upload our content, I mean the files in the <code>output</code> directory of your project to the <code>master</code> branch of your GitHub User page repository, which is the branch that will be accessible through the <code>https://&lt;github-username&gt;.github.io</code> URL.</p>
+<p>For that, it's time to use the <code>ghp-import</code> tool installed earlier. This very practical tool will avoid use playing with branches and directories, and will care about this for us.</p>
+<p>The pelican website documents the instructions to be used:</p>
+<div class="highlight"><pre><span></span>$ pelican content -o output -s publishconf.py
+$ ghp-import -b pelican output
+$ git push git@github.com:rabierp/rabierp.github.io.git pelican:master
+</pre></div>
+
+
+<p><strong>Note:</strong>
+- the 1st command generates the files in the output directory using the <code>publishconf.py</code> files, which has been generated by the <code>pelican-quickstart</code> tool and adds a few additional steps after the <code>pelicanconf.py</code> files to make our static site ready for publication on the net,
+- the 2nd command commits and imports the files in the <code>output</code> directory in the <code>pelican</code> branch of the local repo,
+- the 3rd command pushes the generate site to the master branch of the github User page repo.</p>
+<p>I also added a few classical commands in order to push the whole pelican project repository to the <code>pelican</code> branch of the GitHub repo:</p>
+<div class="highlight"><pre><span></span>$ git add .
+$ git commit -m <span class="s2">&quot;addons to my pelican blog&quot;</span>
+$ git push -u origin pelican
+</pre></div>
+
+
+<p>Now, navigate to <code>https://&lt;github-username&gt;.github.io/</code> and enjoy the result of your work!</p>
         </div>
         <div class="post_list">
             <span>By </span>
-            <a href="/author/pascal-rabier.html">@Pascal Rabier</a>
+            <a href="https://rabierp.github.io/author/pascal-rabier.html">@Pascal Rabier</a>
             <span> in </span>
-            <span class="post_category"><a href="/category/blogging.html" rel="bookmark" title="Permalink to Blogging">[ Blogging ]</a></span>
+            <span class="post_category"><a href="https://rabierp.github.io/category/blogging.html" rel="bookmark" title="Permalink to Blogging">[ Blogging ]</a></span>
             <span class="post_date">lun. 17 avril 2017</span>
             <div><span>Tags : </span>
-                <span><a href="/tag/pelican.html">#pelican, </a></span>
-                <span><a href="/tag/markdown.html">#markdown, </a></span>
-                <span><a href="/tag/ghpages.html">#ghpages, </a></span>
+                <span><a href="https://rabierp.github.io/tag/pelican.html">#pelican, </a></span>
+                <span><a href="https://rabierp.github.io/tag/markdown.html">#markdown, </a></span>
+                <span><a href="https://rabierp.github.io/tag/ghpages.html">#ghpages, </a></span>
             </div>
 
             <div class="entry-social">
-                <span class="twitter"><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=/setting-up-a-github-blog-with-pelican.html&text=Setting up a GitHub blog with Pelican&via=@SWDefinedInfra"><img src="/theme/images/icons/twitter-s.png"></a></span>
+                <span class="twitter"><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=https://rabierp.github.io/setting-up-a-github-blog-with-pelican.html&text=Setting up a GitHub blog with Pelican&via=@SWDefinedInfra"><img src="https://rabierp.github.io/theme/images/icons/twitter-s.png"></a></span>
 
-                <span class="gplus"><a target="_blank" title="Google +" href="https://plus.google.com/share?url=/setting-up-a-github-blog-with-pelican.html&hl=fr" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img src="/theme/images/icons/google-s.png"></a></span>
+                <span class="gplus"><a target="_blank" title="Google +" href="https://plus.google.com/share?url=https://rabierp.github.io/setting-up-a-github-blog-with-pelican.html&hl=fr" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img src="https://rabierp.github.io/theme/images/icons/google-s.png"></a></span>
 
-                <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=/setting-up-a-github-blog-with-pelican.html&t=Setting up a GitHub blog with Pelican"><img src="/theme/images/icons/facebook-s.png"></a></span>
+                <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=https://rabierp.github.io/setting-up-a-github-blog-with-pelican.html&t=Setting up a GitHub blog with Pelican"><img src="https://rabierp.github.io/theme/images/icons/facebook-s.png"></a></span>
 
-                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=/setting-up-a-github-blog-with-pelican.html&title=Setting up a GitHub blog with Pelican" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img src="/theme/images/icons/linkedin-s.png"></a>
+                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://rabierp.github.io/setting-up-a-github-blog-with-pelican.html&title=Setting up a GitHub blog with Pelican" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img src="https://rabierp.github.io/theme/images/icons/linkedin-s.png"></a>
 
-                <span class="mail"><a href="mailto:?subject=Setting up a GitHub blog with Pelican&amp;body=Viens découvrir un article à propos de [Setting up a GitHub blog with Pelican] sur le site de Pascal Rabier. /setting-up-a-github-blog-with-pelican.html" title="Share by Email" target="_blank"><img src="/theme/images/icons/mail-s.png"></a></span>
+                <span class="mail"><a href="mailto:?subject=Setting up a GitHub blog with Pelican&amp;body=Viens découvrir un article à propos de [Setting up a GitHub blog with Pelican] sur le site de Pascal Rabier. https://rabierp.github.io/setting-up-a-github-blog-with-pelican.html" title="Share by Email" target="_blank"><img src="https://rabierp.github.io/theme/images/icons/mail-s.png"></a></span>
             </div>
         </div>
     </article>

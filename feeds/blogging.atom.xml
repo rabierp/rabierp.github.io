@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Software-Defined Infra Blog - Blogging</title><link href="https://rabierp.github.io/" rel="alternate"></link><link href="https://rabierp.github.io/feeds/blogging.atom.xml" rel="self"></link><id>https://rabierp.github.io/</id><updated>2017-04-17T00:00:00+02:00</updated><entry><title>Setting up a GitHub blog with Pelican</title><link href="https://rabierp.github.io/setting-up-a-github-blog-with-pelican.html" rel="alternate"></link><published>2017-04-17T00:00:00+02:00</published><updated>2017-04-17T00:00:00+02:00</updated><author><name>Pascal Rabier</name></author><id>tag:rabierp.github.io,2017-04-17:/setting-up-a-github-blog-with-pelican.html</id><summary type="html">&lt;p&gt;I've been thinking about writing my own Blog for a long time, but had not found the time to invest into searching the simple and fun kind of solution I was looking for.
+Not being a developer, I only discovered very recently that GitHub is offering a free way of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've been thinking about writing my own Blog for a long time, but had not found the time to invest into searching the simple and fun kind of solution I was looking for.
+Not being a developer, I only discovered very recently that GitHub is offering a free way of hosting your own static blog.
+I was quickly interested, and a few minutes googling pointed me to &lt;a href="http://jekyllrb.com"&gt;Jekyllrb&lt;/a&gt; as the natural tool to build my static site and have it hosted as a GitHub user page.
+But I was not fully convinced at start because I wasn't willing to invest in learning Ruby. So it took me a bit more googling to find &lt;a href="http://getpelican.com"&gt;pelican&lt;/a&gt;, which is a &lt;a href="http://python.org"&gt;Python&lt;/a&gt; tool, a language I'm more comfortable with.&lt;/p&gt;
+&lt;p&gt;Here's how I have set up Pelican in order to be able to publish my Blog on My GitHub User Page:&lt;/p&gt;
+&lt;h3&gt;Setup your User Page repo on GitHub&lt;/h3&gt;
+&lt;p&gt;Simply create a new GitHub repository named &lt;code&gt;&amp;lt;github-username&amp;gt;.github.io&lt;/code&gt;.
+You can follow the instructions &lt;a href="https://pages.github.com"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Then, clone this empty repo to the local machine:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/&amp;lt;github-username&amp;gt;/&amp;lt;github-username&amp;gt;.github.io/
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; &amp;lt;github-username&amp;gt;.github.io
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We now are working on the &lt;code&gt;master&lt;/code&gt; branch of the local repo.&lt;/p&gt;
+&lt;p&gt;But, since the kind of page we want to publish is a &lt;em&gt;User&lt;/em&gt; page, rather than a &lt;em&gt;Project&lt;/em&gt; page, the master branch of the repo is the one who must directly handle the root of our future website, not the pelican files that will be installed in the next following steps.&lt;/p&gt;
+&lt;p&gt;So, create directly a new branch, that I choose to name &lt;code&gt;pelican&lt;/code&gt;, because it will handle the pelican project files:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git checkout -b pelican
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Install &amp;amp; Setup Pelican on your PC&lt;/h3&gt;
+&lt;p&gt;I'm Assuming you already have Python installed (As of today, Pelican works as nicely with Python 2.7.x as with 3.3+).
+If this is not the case and if you're working on WindowsTM, I recommend using &lt;a href="http://chocolatey.org"&gt;Chocolatey&lt;/a&gt;, my favorite Package Manager for that OS, to easily install Python and any kind of free software you like (or mostly any, since the chocolatey package repository is pretty large!).&lt;/p&gt;
+&lt;p&gt;Now, let's install the Pelican, Markdown and ghp-import Python modules:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install pelican markdown ghp-import
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In addition to Pelican:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://whatismarkdown.com"&gt;Markdown&lt;/a&gt; is a popular lightweight markup languages well suited for web content&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/davisp/ghp-import"&gt;ghp-import&lt;/a&gt; will be used later to publish the blog to the target GitHub Page&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Let's configure Pelican:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pelican-quickstart
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Basically, you can keep all the default parameters, except of course for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Title of the Web site: choose your title&lt;/li&gt;
+&lt;li&gt;Author of the Web site: put your name or pseudo depending on your preferences&lt;/li&gt;
+&lt;li&gt;URL prefix: answer 'Y' and specify the GitHub User page URL 'http://&lt;github-username&gt;.github.io/'&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As a result, the &lt;code&gt;MyBlog&lt;/code&gt; directory now contains the Pelican default file tree.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="http://docs.getpelican.com"&gt;Pelican documentation&lt;/a&gt; will give you more insights on all possible parameters.&lt;/p&gt;
+&lt;h3&gt;Create a first Article &amp;amp; locally Preview your Blog&lt;/h3&gt;
+&lt;p&gt;All you have to do, is to go to the &lt;code&gt;content&lt;/code&gt; directory in the hierarchy create in the previous paragraph, and create the file that will contain your first Post.&lt;/p&gt;
+&lt;p&gt;You can name the file as you want, e.g. &lt;code&gt;My-1st-post.md&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;File content format is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the header, with the following lines: 'Title: &lt;em&gt;Post title&lt;/em&gt;', 'Date: &lt;em&gt;Post date&lt;/em&gt;', 'Category: &lt;em&gt;Post category&lt;/em&gt;' and 'Tags: &lt;em&gt;list of coma separated Post tags&lt;/em&gt;',&lt;/li&gt;
+&lt;li&gt;the content, written by default in reStructuredText (aka rst) or in Markdown markup languages.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I prefer using Markdown rather than Pelican's default rst, that's why I added mardown module to the &lt;code&gt;pip install&lt;/code&gt; command detailed earlier in this article.&lt;/p&gt;
+&lt;p&gt;Here is an example article file in Markdown, borrowed from the Pelican documentation:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;My&lt;/span&gt; &lt;span class="n"&gt;first&lt;/span&gt; &lt;span class="n"&gt;review&lt;/span&gt;
+&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2010&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;03&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;
+&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Review&lt;/span&gt;
+
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Product&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;Year&lt;/span&gt; &lt;span class="n"&gt;Review&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;Awesome&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="n"&gt;product&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You might find GitHub's &lt;a href="https://guides.github.com/features/mastering-markdown"&gt;Markdown Guide&lt;/a&gt; helpful.&lt;/p&gt;
+&lt;p&gt;Now, from the project main directory, run pelican to generate the static html content and then launch a local webserver:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pelican content
+$ python -m pelican.server
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Alternatively, there's another possible way to launch the local webserver by using the pelican provided script:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ./development_server.sh start
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;(but in my case, on Windows and from GitBash, I had to create a symlink from &lt;code&gt;python.exe&lt;/code&gt; to &lt;code&gt;python3.exe&lt;/code&gt; to make it work)&lt;/p&gt;
+&lt;p&gt;Now, check the result by opening a browser at &lt;a href="http://localhost:8000"&gt;http://localhost:8000&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Install &amp;amp; Setup a Theme (Optional)&lt;/h3&gt;
+&lt;p&gt;Now we have a first start for the content, it's time to work on the presentation.
+It's of course possible to design your very own presentation by developing your own theme, but it is by far easier to start by reusing existing ones: Pelican has a fair amount of themes you can discover &amp;amp; download &lt;a href="http://www.pelicanthemes.com"&gt;here&lt;/a&gt;.
+I choose &lt;code&gt;pelican-blue&lt;/code&gt; and cloned it from the project's GitHub &lt;a href="https://github.com/Parbhat/pelican-blue"&gt;repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For this, I'd recommend creating a &lt;code&gt;pelican-themes&lt;/code&gt; directory in your pelican project dir:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir pelican-themes
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; pelican-themes
+$ git clone https://github.com/Parbhat/pelican-blue.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then, import the theme into your Pelican config:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ..
+$ pelican-themes -i pelican-themes/pelican-blue
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;No sure for each theme you might like &amp;amp; use, but in my case, the GitHUb repo &lt;code&gt;Readme.md&lt;/code&gt; file described variables to be setup in the &lt;code&gt;pelicanconf.py&lt;/code&gt; file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;THEME = &amp;#39;path-to-pelican-blue-theme&amp;#39;
+SIDEBAR_DIGEST = &amp;#39;Programmer and Web Developer&amp;#39;
+FAVICON = &amp;#39;url-to-favicon&amp;#39;
+DISPLAY_PAGES_ON_MENU = True
+TWITTER_USERNAME = &amp;#39;twitter-user-name&amp;#39;
+MENUITEMS = ((&amp;#39;Blog&amp;#39;, SITEURL),)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In my own setup, I also discovered a non-documented variable &lt;code&gt;PAGES = True&lt;/code&gt; required to have static pages appearing in my Blog Menu (in addition to having a &lt;code&gt;pages&lt;/code&gt; subdirectory in the &lt;code&gt;content&lt;/code&gt; directory). But that may be related to the way the specific way the &lt;code&gt;pelican-blue&lt;/code&gt; theme is developed.&lt;/p&gt;
+&lt;p&gt;Now, regenerate our blog with the new theme and check the result:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pelican content
+$ ./development_server.sh start
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And open your browser at &lt;a href="http://localhost:8000"&gt;http://localhost:8000&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Publish your local Blog copy to your GitHub repository&lt;/h3&gt;
+&lt;p&gt;During the 1st step, we've created the GitHub repository for the User page.&lt;/p&gt;
+&lt;p&gt;Since then, we've generated and tested some content locally.&lt;/p&gt;
+&lt;p&gt;So now, we want to upload our content, I mean the files in the &lt;code&gt;output&lt;/code&gt; directory of your project to the &lt;code&gt;master&lt;/code&gt; branch of your GitHub User page repository, which is the branch that will be accessible through the &lt;code&gt;https://&amp;lt;github-username&amp;gt;.github.io&lt;/code&gt; URL.&lt;/p&gt;
+&lt;p&gt;For that, it's time to use the &lt;code&gt;ghp-import&lt;/code&gt; tool installed earlier. This very practical tool will avoid use playing with branches and directories, and will care about this for us.&lt;/p&gt;
+&lt;p&gt;The pelican website documents the instructions to be used:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pelican content -o output -s publishconf.py
+$ ghp-import -b pelican output
+$ git push git@github.com:rabierp/rabierp.github.io.git pelican:master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+- the 1st command generates the files in the output directory using the &lt;code&gt;publishconf.py&lt;/code&gt; files, which has been generated by the &lt;code&gt;pelican-quickstart&lt;/code&gt; tool and adds a few additional steps after the &lt;code&gt;pelicanconf.py&lt;/code&gt; files to make our static site ready for publication on the net,
+- the 2nd command commits and imports the files in the &lt;code&gt;output&lt;/code&gt; directory in the &lt;code&gt;pelican&lt;/code&gt; branch of the local repo,
+- the 3rd command pushes the generate site to the master branch of the github User page repo.&lt;/p&gt;
+&lt;p&gt;I also added a few classical commands in order to push the whole pelican project repository to the &lt;code&gt;pelican&lt;/code&gt; branch of the GitHub repo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git add .
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;addons to my pelican blog&amp;quot;&lt;/span&gt;
+$ git push -u origin pelican
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, navigate to &lt;code&gt;https://&amp;lt;github-username&amp;gt;.github.io/&lt;/code&gt; and enjoy the result of your work!&lt;/p&gt;</content><category term="pelican"></category><category term="markdown"></category><category term="ghpages"></category></entry></feed>

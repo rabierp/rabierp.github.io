@@ -116,4 +116,9 @@ In my own setup, I also discovered a non-documented variable `PAGES = True` requ
 ### Publish your local Blog copy to your GitHub repository
 
 During the 1st step, we've created the GitHub repository for the User page.
+
 Since then, we've generated and tested some content locally.
+
+So now, we want to upload our content, I mean the files in the `output` directory of your project to the `master` branch of your GitHub User page repository, which is the branch that will be accessible through the `https://**username**.github.io` URL.
+
+
